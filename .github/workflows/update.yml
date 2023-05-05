@@ -11,7 +11,7 @@ jobs:
       - uses: octokit/graphql-action@v2.x
         id: get_pulls
         with:
-          query: |`
+          query: |
               user(login:$login) {
                 pullRequests(last: 100) {
                   edges {
