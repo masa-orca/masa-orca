@@ -8,6 +8,28 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
-      - run: echo $(gh pr list)
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: octokit/graphql-action@v2.x
+        id: get_pulls
+        with:
+          query: |
+            query user($login:String!,$repo:String!) {
+              user(login:$login) {
+                pullRequests(last: 100) {
+                  edges {
+                    node {
+                      id
+                      repository {
+                        id
+                        name
+                      }
+                      title
+                      state
+                    }
+                  }
+                }
+              }
+            }
+          login: ${{ github.event.repository.owner.login }}
+    # env:
+    #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo 'latest release: ${{ steps.get_pulls.outputs.data }}'"
