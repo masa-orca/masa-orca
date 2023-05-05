@@ -17,9 +17,7 @@ jobs:
                 pullRequests(last: 100) {
                   edges {
                     node {
-                      id
                       repository {
-                        id
                         name
                       }
                       title
@@ -32,4 +30,4 @@ jobs:
           login: ${{ github.event.repository.owner.login }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo 'latest release: ${{ steps.get_pulls.outputs.data }}'"
+      - run: "echo '${{ steps.get_pulls.outputs.data }}' >> user_info.json"
