@@ -1,0 +1,8 @@
+### Hi there 👋
+
+#### My pul request contributions summary
+|repository|states summary|
+|:---:|:---:|
+{%- for repository_name, repository_states in repositories.items() %}
+|{{ repository_name }}|{%- for state, count in repository_states.items() -%}{{ state }}: {{ count }}{% if not loop.last %},{% endif %}{%- endfor -%}|
+{%- endfor -%}
