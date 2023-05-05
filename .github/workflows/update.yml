@@ -47,4 +47,4 @@ jobs:
           commit_message: Update README.md
           target_branch: main
           files: README.md
-          access_token: ${{ github.token }}
+          access_token: ${{ secrets.GITHUB_TOKEN }}
