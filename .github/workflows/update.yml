@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo $(gh pr list)
-  env:
-    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
