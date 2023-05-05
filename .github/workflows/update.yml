@@ -30,6 +30,6 @@ jobs:
               }
             }
           login: ${{ github.event.repository.owner.login }}
-    # env:
-    #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo 'latest release: ${{ steps.get_pulls.outputs.data }}'"
