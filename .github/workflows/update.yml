@@ -6,6 +6,8 @@ jobs:
   collect_pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out
+        uses: actions/checkout@v2
       - run: echo $(gh pr list)
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
