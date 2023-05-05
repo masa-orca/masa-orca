@@ -31,3 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo '${{ steps.get_pulls.outputs.data }}' >> user_info.json"
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - run: python create_README.py
