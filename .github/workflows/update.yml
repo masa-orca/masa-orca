@@ -12,7 +12,7 @@ jobs:
         id: get_pulls
         with:
           query: |
-            query user($login:String!,$repo:String!) {
+            query user($login:String!) {
               user(login:$login) {
                 pullRequests(last: 100) {
                   edges {
