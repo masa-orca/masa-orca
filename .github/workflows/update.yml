@@ -4,5 +4,6 @@
 
 jobs:
   collect_pr:
+    runs-on: ubuntu-latest
     steps:
       - run: echo $(gh pr list)
