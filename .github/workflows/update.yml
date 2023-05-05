@@ -12,6 +12,7 @@ jobs:
         id: get_pulls
         with:
           query: |
+            query user($login:String!) {
               user(login:$login) {
                 pullRequests(last: 100) {
                   edges {
@@ -28,7 +29,8 @@ jobs:
                   }
                 }
               }
-          login: ${{ github.event.repository.owner.login }}
+            }
+            login: ${{ github.event.repository.owner.login }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo '${{ steps.get_pulls.outputs.data }}' >> user_info.json"
