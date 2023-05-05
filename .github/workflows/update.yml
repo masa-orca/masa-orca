@@ -40,11 +40,9 @@ jobs:
           python-version: 3.9
       - run: pip install jinja2
       - run: python create_README.py
-      - uses: GuillaumeFalourd/git-commit-push@v1.3
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
         with:
-          email: ${{ github.actor }}@users.noreply.github.com
-          name: ${{ github.actor }}
-          commit_message: Update README.md
-          target_branch: main
-          files: README.md
-          access_token: ${{ secrets.GITHUB_TOKEN }}
+          name: my-artifact
+          path: README.md
+          retention-days: 1
