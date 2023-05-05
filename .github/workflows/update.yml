@@ -1,0 +1,8 @@
+---
+'on':
+  push:
+
+jobs:
+  collect_pr:
+    steps:
+      - run: echo $(gh pr list)
